@@ -1,0 +1,41 @@
+#
+# Source code address
+# https://hub.docker.com/u/cuongtransc/
+#
+# Syntax: https://docs.docker.com/compose/compose-file/
+#
+
+version: "2.4"
+
+x-default: &default
+    networks:
+        - comp_default
+    cpu_shares: 512
+    mem_limit: 100M
+    # privileged: true
+    # restart: always
+    # stdin_open: true
+    # tty: true
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "100M"
+            max-file: "3"
+
+services:
+    discord-webhook:
+        << : *default
+        image: devopszcom/discord-webhook:0.1
+        build: .
+        environment:
+            - FORWARDER_BASE_URL=https://discord-webhook.devopsz.com
+        ports:
+            - "5000:5000"
+        hostname: discord-webhook
+
+networks:
+    comp_default:
+        external: true
+
+# volumes:
+#     db-data:

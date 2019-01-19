@@ -142,6 +142,7 @@ crashlytics-build.properties
 
 # Ignore local docker-compose
 0compose/
+docker-compose.override.yml
 
 # Ignore tmp
 tmp/
