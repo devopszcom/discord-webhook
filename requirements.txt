@@ -1,2 +1,5 @@
 Flask>=1.0.2
 requests>=2.21.0
+
+# APM
+sentry-sdk[flask]==0.6.8

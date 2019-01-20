@@ -6,6 +6,13 @@ import config
 import converter
 from utils import get_ip
 
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
+
+sentry_sdk.init(
+    dsn=config.SENTRY_DNS,
+    integrations=[FlaskIntegration()]
+)
 
 app = Flask(__name__)
 
