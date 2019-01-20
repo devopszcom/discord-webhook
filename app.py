@@ -28,7 +28,7 @@ def get_your_ip():
 
 @app.route('/api/webhooks/convert')
 def convert():
-    discord_webhook_url = request.args.get('webhook_url')
+    discord_webhook_url = request.args.get('webhook_url', '')
     forwarder_webhook_url = discord_webhook_url.replace(config.DISCORD_BASE_URL, config.FORWARDER_BASE_URL)
 
     return forwarder_webhook_url
